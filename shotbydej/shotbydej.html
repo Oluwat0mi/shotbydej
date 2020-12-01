@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, 		                               initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+	<title> ©ShotByDej </title>
+
+<link rel="stylesheet" href="style.css">
+<!-- embedding fontawesome icons	 -->
+<script src="https://kit.fontawesome.com/e25b852c87.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    
+	<nav>
+		<h1 class="logo">©ShotByDej</h1>
+
+		<input type="checkbox" id="hamburger-toggle">
+		<label for="hamburger-toggle" class="hamburger">
+			<span class="bar"></span>
+		</label>
+
+		<ul class="nav-list">
+			<li> <a href="shotbydej.html" class="scroll-link">home</a> </li>
+			<li> <a href="#about" class="scroll-link">about</a> </li>
+			<li> <a href="#portfolio" class="scroll-link">portfolio</a> </li>
+			<li> <a href="#contact" class="scroll-link">contact</a> </li>
+		</ul>
+
+	</nav>
+
+
+<main id="content">
+
+	
+<section id="dej">
+    <section id="about" class="section">
+    <div class="main">
+        <span><p class="text"></p></span>
+	</div>
+</section>
+<div class="about">
+<p>
+I dream about photograpy. Memories of gazing through a finger marked window pane, disparate perspertives through the lens. 
+I think about the diverse ways which in which photographs are interpreted.
+</p>
+<br>
+<a href="http://www.instagram.com/shotbydej"><button>Work With Me <i class="fas fa-arrow-right"></i></button></a>
+</div>
+
+</section>
+<br>
+<br>
+	<section>
+		
+		<div class="container">
+			<section id="portfolio" class="section"></section>
+			<p id="port"> Featured <span>Portfolio</span></p>
+		</section>
+			<br>
+			<div class="dej-gallery">
+				<div class="item item1"></div>
+				<div class="item item2"></div>
+				<div class="item item3"></div>
+				<div class="item item4"></div>
+				<div class="item item5"></div>
+				<div class="item item6"></div>
+			</div>
+		  </div>
+	</section>
+
+</main>
+
+<footer id="footer">
+	<section id="contact" class="section">
+<p id="cont"><span>CONTACT</span></p>
+</section>
+<section id="sect1">
+	
+<Address><i class="fas fa-map-marked-alt"></i> 150 Ikorodu road, adebowale house.</Address>
+<br>
+<p><i class="fas fa-mobile-alt"></i>  +234 8028 857059</p>
+<br>
+<a href="mailto:shotbydej@gmail.com"><i class="fas fa-inbox"></i>  shotbydej@gmail.com</a>
+
+</section>
+
+<section>
+	<div class="social-media-list">
+		<a class="social-media" href="#">
+			<i class="fab fa-facebook-f"></i>
+			
+		</a>
+
+		<a class="social-media" href="#">
+			<i class="fab fa-twitter"></i>
+		
+		</a>
+		<a class="social-media" href="http://www.instagram.com/shotbydej">
+			<i class="fab fa-instagram"></i>
+			
+		</a>
+	</div>
+</section>
+
+
+<p id="copy">Copyright &copy; 2020 All rights reserved | By <a href="https://www.instagram.com/oluwat0mi?r=nametag">Oluwatomi</a></p>
+</footer>
+
+
+</body>
+</html>
+<script src="app.js"></script>
+    <script>
+        var typed = new Typed('.text', {
+        strings: ['Hello! ', "I'm Ayodeji."],
+        typeSpeed: 50,
+        backSpeed: 50,
+        loop: false
+        });
+
+
+
+
+
+
+// Element.getBoundingClientRect() method returns the size of an element and its position relative to the viewport.
+// pageYOffset is a read - only window property that returns the number of pixels the document has been scrolled vertically.
+// slice extracts a section of a string without modifying original string
+//offsetTop - A Number, representing the top position of the element, in pixels
+
+// ********** set date ************
+const date = document.getElementById('date');
+date.innerHTML = new Date().getFullYear();
+// ********** close links ************
+const navToggle = document.querySelector('.nav-toggle');
+const linksContainer = document.querySelector('.links-container');
+const links = document.querySelector('.links');
+
+
+navToggle.addEventListener('click', function () {
+    // linksContainer.classList.toggle('show-links');
+    const containerHeight = linksContainer.getBoundingClientRect().height;
+    const linksHeight = links.getBoundingClientRect().height;
+
+    if (containerHeight === 0) {
+        linksContainer.style.height = `${linksHeight}px`
+    }else{
+        linksContainer.style.height = 0;
+    }
+});
+
+const navbar = document.getElementById('nav');
+const topLink = document.querySelector('.top-link');
+// ********** fixed navbar ************
+window.addEventListener('scroll', function () {
+    const scrollHeight = window.pageYOffset;
+    const navHeight = navbar.getBoundingClientRect().height;
+
+    if (scrollHeight > navHeight) {
+        navbar.classList.add("fixed-nav");
+    } else {
+        navbar.classList.remove('fixed-nav');
+    }
+
+    if (scrollHeight > 500) {
+        //console.log("helo");
+        topLink.classList.add('show-link');
+    } else {
+        topLink.classList.remove('show-link');
+    }
+});
+// ********** smooth scroll ************
+// select links
+const scrollLinks = document.querySelectorAll('.scroll-link');
+
+scrollLinks.forEach(function (link) {
+    link.addEventListener('click', function (e) {
+        // prevent default
+        e.preventDefault();
+        //navigate to specific spot
+        const id = e.currentTarget.getAttribute("href").slice(1);
+        const element = document.getElementById(id);
+        // calculate the heights
+        const navHeight = navbar.getBoundingClientRect().height;
+        const containerHeight = linksContainer.getBoundingClientRect().height;
+        const fixedNav = navbar.classList.contains("fixed-nav");
+        let position = element.offsetTop - navHeight;
+
+        if (!fixedNav) {
+            position = position - navHeight;
+        }
+
+        if(navHeight > 82) {
+            position = position + containerHeight;
+        }
+
+        window.scrollTo({
+            left: 0,
+            top: position,
+        });
+        linksContainer.style.height = 0;
+    });;
+});
+
+
+	</script>
+	
+
+
+
+
